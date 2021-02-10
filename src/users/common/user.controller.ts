@@ -7,9 +7,9 @@ import {
   UnprocessableEntityException,
   UseInterceptors,
 } from '@nestjs/common';
-import CreateUserRequest from './dtos/create-user-request.dto';
-import ResponseUserDTO from './dtos/response-user.dto';
-import User from './user.entity';
+import CreateUserRequest from '../dtos/create-user-request.dto';
+import ResponseUserDTO from '../dtos/response-user.dto';
+import User from '../user.entity';
 import { UsersService } from './users.service';
 
 @Controller('users')

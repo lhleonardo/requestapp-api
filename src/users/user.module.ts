@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HashProvider } from 'src/providers/hash';
-import { AdminController } from './admin.controller';
-import { AdminService } from './admin.service';
-import { UsersController } from './user.controller';
+import { AdminController } from './admin/admin.controller';
+import { AdminService } from './admin/admin.service';
+import { UsersController } from './common/user.controller';
+import { UsersService } from './common/users.service';
 import UserRepository from './user.repository';
-import { UsersService } from './users.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserRepository])],

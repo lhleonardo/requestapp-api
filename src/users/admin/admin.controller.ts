@@ -8,9 +8,9 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { AdminService } from './admin.service';
-import CreateUserRequest from './dtos/create-user-request.dto';
-import ResponseUserDTO from './dtos/response-user.dto';
-import User from './user.entity';
+import CreateUserRequest from '../dtos/create-user-request.dto';
+import ResponseUserDTO from '../dtos/response-user.dto';
+import User from '../user.entity';
 
 @Controller('admin')
 @UseInterceptors(ClassSerializerInterceptor)
