@@ -9,6 +9,8 @@ import {
 
 import { v4 as uuid } from 'uuid';
 
+import { Exclude } from 'class-transformer';
+
 export enum Role {
   commom = 'commom',
   reviewer = 'reviewer',
@@ -28,13 +30,20 @@ class User {
   public email: string;
 
   @Column()
+  @Exclude()
+  public password: string;
+
+  @Column()
   public role: Role;
 
-  @CreateDateColumn('created_at')
+  @CreateDateColumn({ name: 'created_at' })
   public createdAt: Date;
 
-  @UpdateDateColumn('updated_at')
+  @UpdateDateColumn({ name: 'updated_at' })
   public updatedAt: Date;
+
+  @Column({ default: true })
+  public active: boolean;
 
   @BeforeInsert()
   public generateId(): void {

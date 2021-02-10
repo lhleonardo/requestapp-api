@@ -14,11 +14,13 @@ services:
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: requestapp
 
-  adminer:
-    image: adminer
-    restart: always
+  pgadmin:
+    image: dpage/pgadmin4
+    tty: true
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@user.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
     ports:
-      - 8080:8080
-
-volumes:
-  pg-data:
+      - "8080:80"
+    depends_on:
+      - pgsql

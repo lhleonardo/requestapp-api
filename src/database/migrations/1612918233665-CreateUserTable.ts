@@ -20,6 +20,8 @@ export class CreateUserTable1612918233665 implements MigrationInterface {
             type: 'enum',
             enum: ['commom', 'reviewer', 'payer', 'admin'],
           },
+          { name: 'active', type: 'boolean', default: true },
+          { name: 'password', type: 'varchar' },
           { name: 'created_at', type: 'timestamp', default: 'now()' },
           { name: 'updated_at', type: 'timestamp', default: 'now()' },
         ],
