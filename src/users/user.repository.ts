@@ -17,12 +17,6 @@ class UserRepository extends Repository<User> {
 
     return await this.save(createdUser);
   }
-
-  public async findByEmail(email: string): Promise<User | undefined> {
-    const response = await this.findOne({ where: { email } });
-
-    return response;
-  }
 }
 
 export default UserRepository;

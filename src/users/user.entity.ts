@@ -12,7 +12,7 @@ import { v4 as uuid } from 'uuid';
 import { Exclude } from 'class-transformer';
 
 export enum Role {
-  commom = 'commom',
+  common = 'common',
   reviewer = 'reviewer',
   payer = 'payer',
   admin = 'admin',

@@ -11,12 +11,23 @@ export class UsersService {
     private readonly hashProvider: HashProvider,
   ) {}
 
-  public async createAdminUser({
+  public async getCommonUsers(): Promise<User[]> {
+    const users = await this.userRepository.find({
+      where: { role: Role.common },
+    });
+
+    return users;
+  }
+
+  public async createUser({
     email,
     name,
     password,
   }: CreateUserDTO): Promise<User> {
-    const existUserUsingEmail = await this.userRepository.findByEmail(email);
+    // busca pelo e-mail
+    const existUserUsingEmail = await this.userRepository.findOne({
+      where: { email },
+    });
 
     if (existUserUsingEmail) {
       throw new ConflictException('Endereço de email já está em uso');
@@ -30,7 +41,7 @@ export class UsersService {
         email,
         password: passwordHashed,
       },
-      Role.admin,
+      Role.common,
     );
 
     return admin;

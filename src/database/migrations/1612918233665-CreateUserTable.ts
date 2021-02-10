@@ -18,7 +18,7 @@ export class CreateUserTable1612918233665 implements MigrationInterface {
           {
             name: 'role',
             type: 'enum',
-            enum: ['commom', 'reviewer', 'payer', 'admin'],
+            enum: ['common', 'reviewer', 'payer', 'admin'],
           },
           { name: 'active', type: 'boolean', default: true },
           { name: 'password', type: 'varchar' },
