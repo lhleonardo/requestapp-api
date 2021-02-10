@@ -5,7 +5,7 @@ import User, { Role } from './user.entity';
 import UserRepository from './user.repository';
 
 @Injectable()
-export class UsersService {
+export class AdminService {
   constructor(
     private readonly userRepository: UserRepository,
     private readonly hashProvider: HashProvider,
@@ -13,7 +13,7 @@ export class UsersService {
 
   public async getAll(): Promise<User[]> {
     const users = await this.userRepository.find({
-      where: { role: Role.common },
+      where: { role: Role.admin },
     });
 
     return users;
@@ -41,7 +41,7 @@ export class UsersService {
         email,
         password: passwordHashed,
       },
-      Role.common,
+      Role.admin,
     );
 
     return admin;

@@ -7,19 +7,19 @@ import {
   UnprocessableEntityException,
   UseInterceptors,
 } from '@nestjs/common';
+import { AdminService } from './admin.service';
 import CreateUserRequest from './dtos/create-user-request.dto';
 import ResponseUserDTO from './dtos/response-user.dto';
 import User from './user.entity';
-import { UsersService } from './users.service';
 
-@Controller('users')
+@Controller('admin')
 @UseInterceptors(ClassSerializerInterceptor)
-export class UsersController {
-  constructor(private readonly userService: UsersService) {}
+export class AdminController {
+  constructor(private readonly adminService: AdminService) {}
 
   @Get()
-  public async get(): Promise<User[]> {
-    const users = await this.userService.getAll();
+  public async find(): Promise<User[]> {
+    const users = await this.adminService.getAll();
 
     return users;
   }
@@ -32,7 +32,7 @@ export class UsersController {
       throw new UnprocessableEntityException('As senhas não conferem');
     }
 
-    const createdUser = await this.userService.createUser({
+    const createdUser = await this.adminService.createUser({
       name,
       email,
       password,
