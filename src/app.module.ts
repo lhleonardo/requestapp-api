@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import User from './users/user.entity';
 import { UsersModule } from './users/user.module';
 import { AuthModule } from './auth/auth.module';
+import { RequestsModule } from './requests/requests.module';
+import Request from './requests/requests.entity';
 
 @Module({
   imports: [
@@ -16,10 +18,11 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.TYPEORM_USERNAME,
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DATABASE,
-      entities: [User],
+      entities: [User, Request],
     }),
     UsersModule,
     AuthModule,
+    RequestsModule,
   ],
   controllers: [],
   providers: [],
