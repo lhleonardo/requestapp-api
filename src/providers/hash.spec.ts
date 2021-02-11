@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { Hash } from './hash';
+import { HashProvider } from './hash';
 
 describe('Hash', () => {
-  let provider: Hash;
+  let provider: HashProvider;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [Hash],
+      providers: [HashProvider],
     }).compile();
 
-    provider = module.get<Hash>(Hash);
+    provider = module.get<HashProvider>(HashProvider);
   });
 
   it('should be defined', () => {
